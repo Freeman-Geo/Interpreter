@@ -1,6 +1,0 @@
-
-pip freeze > requirements.txt
-
-flask
-requests
-
