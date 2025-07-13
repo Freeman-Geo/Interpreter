@@ -22,8 +22,9 @@ def traducir():
         return jsonify({"error": "Faltan datos: texto, source o target"}), 400
 
     try:
+        # 👉 API pública de LibreTranslate
         response = requests.post(
-            "http://localhost:5001/translate",  # 🔁 Conexión a tu contenedor local
+            "https://libretranslate.de/translate",
             json={
                 "q": texto,
                 "source": source,
@@ -34,7 +35,6 @@ def traducir():
             timeout=10
         )
 
-        # Verifica código de estado HTTP
         if response.status_code != 200:
             return jsonify({"error": f"Error en traducción. Código HTTP: {response.status_code}"}), 500
 
@@ -56,4 +56,4 @@ def traducir():
         return jsonify({"error": f"Error inesperado: {str(e)}"}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False, host="0.0.0.0", port=10000)
