@@ -10,11 +10,11 @@ const rightLangSelect = document.getElementById("right-lang");
 // Función para traducir texto usando el backend Flask
 async function traducirTexto(texto, idiomaOrigen, idiomaDestino) {
   try {
-    const response = await fetch("/traducir", {
+    const response = await fetch("/translate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        q: texto,
+        text: texto,
         source: idiomaOrigen,
         target: idiomaDestino
       })
@@ -22,8 +22,8 @@ async function traducirTexto(texto, idiomaOrigen, idiomaDestino) {
 
     const data = await response.json();
 
-    if (data.translatedText) {
-      return data.translatedText;
+    if (data.translated_text) {
+      return data.translated_text;
     } else {
       throw new Error(data.error || "Error desconocido al traducir");
     }
@@ -45,7 +45,7 @@ leftButton.addEventListener("click", () => {
     recognitionLeft.lang = leftLangSelect.value || "es";
     recognitionLeft.start();
     isRecognizingLeft = true;
-    leftButton.classList.add("listening"); // ⬅️ AUMENTO
+    leftButton.classList.add("listening");
     leftOutput.textContent = "🎤 Escuchando... habla ahora";
     console.log("Inicio reconocimiento izquierdo");
   } else {
@@ -79,7 +79,7 @@ recognitionLeft.onerror = (event) => {
 
 recognitionLeft.onend = () => {
   isRecognizingLeft = false;
-  leftButton.classList.remove("listening"); // ⬅️ AUMENTO
+  leftButton.classList.remove("listening");
   console.log("Reconocimiento izquierdo terminado");
 };
 
@@ -100,7 +100,7 @@ rightButton.addEventListener("click", () => {
     recognitionRight.lang = rightLangSelect.value || "en";
     recognitionRight.start();
     isRecognizingRight = true;
-    rightButton.classList.add("listening"); // ⬅️ AUMENTO
+    rightButton.classList.add("listening");
     rightOutput.textContent = "🎤 Escuchando... habla ahora";
     console.log("Inicio reconocimiento derecho");
   } else {
@@ -134,7 +134,7 @@ recognitionRight.onerror = (event) => {
 
 recognitionRight.onend = () => {
   isRecognizingRight = false;
-  rightButton.classList.remove("listening"); // ⬅️ AUMENTO
+  rightButton.classList.remove("listening");
   console.log("Reconocimiento derecho terminado");
 };
 
@@ -169,8 +169,8 @@ listenRight.addEventListener("click", () => {
   }
 });
 
-let main = document.getElementById("main--container")
-let openbtn = document.getElementById("top--start-button")
+let main = document.getElementById("main--container");
+let openbtn = document.getElementById("top--start-button");
 
 openbtn.addEventListener("click", () => {
   if (main) {
