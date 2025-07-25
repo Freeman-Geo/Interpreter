@@ -1,86 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#007bff">
-    <link rel="stylesheet" href="/static/styles.css">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/favicon.png') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
-    <title>Interprete</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#007bff" />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/favicon.png') }}" />
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}" />
+
+  <title>Interprete</title>
 </head>
 <body>
-    <div class="top--container">
-        <div class="top--left-container">
-            <select id="left-lang" class="lang-selector">
-                <option value="es">Español</option>
-                <option value="en">Inglés</option>
-                <option value="pt">Portugués</option>
-                <option value="fr">Francés</option>
-                <option value="de">Alemán</option>
-                <option value="it">Italiano</option>
-                <option value="zh">Chino (Mandarín)</option>
-                <option value="ru">Ruso</option>
-                <option value="ar">Árabe</option>
-            </select>
-        </div>
-        <button class="top--title-container" id="top--start-button" title="Click to Start">
-             <img src="/static/assets/icon-200.png" class="fav-img">  Interpreter
-        </button>
-        <div class="top--right-container">
-            <select id="right-lang" class="lang-selector">
-                <option value="es">Español</option>
-                <option value="en">Inglés</option>
-                <option value="pt">Portugués</option>
-                <option value="fr">Francés</option>
-                <option value="de">Alemán</option>
-                <option value="it">Italiano</option>
-                <option value="zh">Chino (Mandarín)</option>
-                <option value="ru">Ruso</option>
-                <option value="ar">Árabe</option>
-            </select>
-        </div>
+  <div class="top--container">
+    <div class="top--left-container">
+      <select id="left-lang" class="lang-selector">
+        <option value="es">Español</option>
+        <option value="en">Inglés</option>
+        <option value="pt">Portugués</option>
+        <option value="fr">Francés</option>
+        <option value="de">Alemán</option>
+        <option value="it">Italiano</option>
+        <option value="zh-cn">Chino (Mandarín)</option>
+        <option value="ru">Ruso</option>
+        <option value="ar">Árabe</option>
+      </select>
     </div>
-    <div class="hero--container">
-        <div class="hero--sides hero--left-container">
-            <div class="big--button left--big-button" id="left--button" title="Click to Speak">
-                <p class="button--parr" id="but--parr-left">Click and Speak up</p>
-            </div>
-            <div class="speech--container speech--left-container" id="speech--left">
-                
-            </div>
-        </div>
-        <div class="hero--sides hero--right-container">
-            <div class="big--button right--big-button" id="right--button" title="Click to Speak">
-                <p class="button--parr" id="but--parr-right">Click and Speak up</p>
-            </div>
-            <div class="speech--container speech--right-container" id="speech--right">
-                
-            </div>
-        </div>
+    <button class="top--title-container" id="top--start-button" title="Click to Start">
+      <img src="/static/assets/icon-200.png" class="fav-img" /> Interpreter
+    </button>
+    <div class="top--right-container">
+      <select id="right-lang" class="lang-selector">
+        <option value="es">Español</option>
+        <option value="en">Inglés</option>
+        <option value="pt">Portugués</option>
+        <option value="fr">Francés</option>
+        <option value="de">Alemán</option>
+        <option value="it">Italiano</option>
+        <option value="zh-cn">Chino (Mandarín)</option>
+        <option value="ru">Ruso</option>
+        <option value="ar">Árabe</option>
+      </select>
     </div>
+  </div>
 
-    <div class="listen listen--left" id="listen--left">
-        &#128066
+  <div class="hero--container">
+    <div class="hero--sides hero--left-container">
+      <div class="big--button left--big-button" id="left--button" title="Click to Speak">
+        <p class="button--parr" id="but--parr-left">Click and Speak up</p>
+      </div>
+      <div class="speech--container speech--left-container" id="speech--left"></div>
     </div>
-    <div class="listen listen--right" id="listen--right">
-        &#128066
+    <div class="hero--sides hero--right-container">
+      <div class="big--button right--big-button" id="right--button" title="Click to Speak">
+        <p class="button--parr" id="but--parr-right">Click and Speak up</p>
+      </div>
+      <div class="speech--container speech--right-container" id="speech--right"></div>
     </div>
+  </div>
 
-    <img src='/static/assets/main-img.png' class="main--container" id="main--container">
-        
-    </img>
+  <div class="listen listen--left" id="listen--left">&#128066</div>
+  <div class="listen listen--right" id="listen--right">&#128066</div>
 
+  <img src="/static/assets/main-img.png" class="main--container" id="main--container" />
 
-    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
-    <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/static/serviceWorker.js')
-      .then(reg => console.log("✅ Service Worker registrado"))
-      .catch(err => console.error("❌ Error registrando Service Worker:", err));
-  }
-</script>
+  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/static/service-worker.js')
+          .then(reg => console.log('[Service Worker] Registrado:', reg.scope))
+          .catch(err => console.error('[Service Worker] Error:', err));
+      });
+    }
+  </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
   "name": "Traductor de Voz",
   "short_name": "Traductor",
   "description": "App web para traducir voz en tiempo real",
-  "start_url": "/",
+  "start_url": "/interprete/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#007bff",
